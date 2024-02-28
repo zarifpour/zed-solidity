@@ -47,5 +47,4 @@ Move the `zed-solidity` directory to `~/Library/Application Support/Zed/extensio
 
   6. Relocate the `solidity.wasm` file to the `zed-solidity/grammars` directory within this repository.
 
-> [!Note]
-> The extension has been observed to load correctly. However, there is an issue where it fails to recognize Solidity files and does not automatically set the language for these files when the extension is loaded.
+  7. Remove the `solidity.toml` file from the `zed-solidity/grammars` directory.

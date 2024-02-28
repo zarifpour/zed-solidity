@@ -1,11 +1,7 @@
 {
   "name": "Solidity",
   "version": "0.0.1",
-  "authors": [
-    "Daniel Zarifpour <z@rifpour.xyz>",
-    "Meet Mangukiya <meetmangukiya98@gmail.com>",
-    "Tom Holford <info@tholf.org>"
-  ],
+  "authors": ["Daniel Zarifpour <z@rifpour.xyz>"],
   "description": "Solidity language support for Zed",
   "repository": "https://github.com/zarifpour/zed-solidity"
 }
