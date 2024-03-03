@@ -14,6 +14,8 @@ git clone https://github.com/zarifpour/zed-solidity
 
 Move the `zed-solidity` directory to `~/Library/Application Support/Zed/extensions/installed`.
 
+Rename the directory to `solidity`.
+
 ### 3. Installation Options (ensure Docker is running)
 
 First, navigate to the relocated repository in `~/Library/Application Support/Zed/extensions/installed`:
