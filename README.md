@@ -2,6 +2,8 @@
 
 Enhance your Zed editor with Solidity language support through this extension.
 
+![CleanShot 2024-02-28 at 02 40 51 on Zed — example sol — zed-solidity@2x](https://github.com/zed-industries/extensions/assets/16494335/2af32291-3d9b-4975-b721-a819d349b085)
+
 ## 🛠️ Development Setup
 
 ### 1. Clone the repository
