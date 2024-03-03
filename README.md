@@ -31,7 +31,7 @@ make
 ```
 
 > That was easy!
->
+
 #### Option 2: Manual
 
 1. Clone the `tree-sitter-solidity` repository:
@@ -64,6 +64,19 @@ tree-sitter build-wasm
 
 7. Remove the `solidity.toml` file from the `zed-solidity/grammars` directory.
 
+### 4. Restart Zed
+
+Run the following command in Zed to reload extensions:
+
+```shell
+zed: reload extensions
+```
+
+Try opening a `.sol` file in Zed. You should see syntax highlighting.
+
+> [!Note]
+> If you still do not see syntax highlighting, try quitting Zed and restarting the application.
+
 ## 🎸 Contributing
 
 Contributions are welcome! Note that some features, like 'Go to Definition', are not fully supported yet. We encourage enhancements and fixes.
@@ -89,7 +102,8 @@ Check open issues for areas needing improvement. Thanks for helping improve Soli
 
 <div align=center>
 
-  Made with 🩵 by <a href="https://zarifpour.xyz">Daniel Zarifpour</a>
+Made with 🩵 by <a href="https://zarifpour.xyz">Daniel Zarifpour</a>
 
-  <a href="https://www.buymeacoffee.com/zarifpour"><img src="https://img.buymeacoffee.com/button-api/?text=Help me love&emoji=♥️&slug=zarifpour&button_colour=ffbbb6&font_colour=000000&font_family=Cookie&outline_colour=FF0000&coffee_colour=FFDD00" /></a>
+<a href="https://www.buymeacoffee.com/zarifpour"><img src="https://img.buymeacoffee.com/button-api/?text=Help me love&emoji=♥️&slug=zarifpour&button_colour=ffbbb6&font_colour=000000&font_family=Cookie&outline_colour=FF0000&coffee_colour=FFDD00" /></a>
+
 </div>
