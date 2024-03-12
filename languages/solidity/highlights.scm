@@ -209,9 +209,38 @@
   "+"
   "++"
   "--"
+  "+="                  ; added
+  "-="                  ; added
+  "="                   ; added
+  "*="                  ; added
 ] @operator
 
 [
   "delete"
   "new"
 ] @keyword.operator
+
+; Zed settings
+[
+ "break"
+ "continue"
+ "if"
+ "else"
+ "switch"
+ "case"
+ "default"
+] @keyword.conditional
+
+[
+ "for"
+]
+@keyword.repeat
+
+[
+  "?"
+  ":"
+] @keyword.operator
+
+[
+  "revert"
+] @keyword.revert

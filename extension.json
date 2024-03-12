@@ -1,7 +1,7 @@
 {
   "name": "Solidity",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "authors": ["Daniel Zarifpour <z@rifpour.xyz>"],
-  "description": "Solidity language support for Zed",
+  "description": "Solidity language support for Zed. ✰ to support ➪",
   "repository": "https://github.com/zarifpour/zed-solidity"
 }
