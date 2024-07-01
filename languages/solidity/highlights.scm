@@ -244,3 +244,7 @@
 [
   "revert"
 ] @keyword.revert
+
+[
+  "error"
+] @keyword.error
