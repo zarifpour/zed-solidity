@@ -9,7 +9,7 @@ build-wasm:
 	git clone $(REPO_URL) $(CLONE_DIR); \
 	cd $(CLONE_DIR); \
 	git checkout $(REPO_BRANCH); \
-	tree-sitter build-wasm; \
+	tree-sitter build --wasm; \
 	mv tree-sitter-solidity.wasm ../grammars/$(WASM_FILE); \
 	cd ..; \
 	rm -rf grammars/solidity.toml

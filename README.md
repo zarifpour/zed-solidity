@@ -59,7 +59,7 @@ cd tree-sitter-solidity
 4. Build the WebAssembly (WASM) file (ensure Docker is running):
 
 ```shell
-tree-sitter build-wasm
+tree-sitter build --wasm
 ```
 
 5. Rename the generated WASM file to `solidity.wasm`.
