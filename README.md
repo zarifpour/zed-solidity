@@ -1,9 +1,9 @@
 # 💠 Solidity Language Support for Zed
 
-Enhance your Zed editor with Solidity language support through this extension.
+Enhance Zed with Solidity language support, including syntax highlighting and language server features such as diagnostics and more!
 
 - Tree Sitter: [tree-sitter-solidity](https://github.com/JoranHonig/tree-sitter-solidity)
-- Language Server: [solc-lsp]()
+- Language Server: [@nomicfoundation/solidity-language-server](https://github.com/NomicFoundation/hardhat-vscode/tree/main/server)
 
 ![CleanShot 2024-02-28 at 02 40 51 on Zed — example sol — zed-solidity@2x](https://github.com/zed-industries/extensions/assets/16494335/2af32291-3d9b-4975-b721-a819d349b085)
 
@@ -15,78 +15,26 @@ Enhance your Zed editor with Solidity language support through this extension.
 git clone https://github.com/zarifpour/zed-solidity
 ```
 
-### 2. Load the extension
+### 2. Uninstall the existing extension
 
-Move the `zed-solidity` directory to `~/Library/Application Support/Zed/extensions/installed`.
+If you have the existing extension installed, you need to uninstall it before installing the development version.
 
-**(Optional)** To ensure seamless updates from the extensions page upon the release of a new version, consider renaming the directory to `solidity`.
+### 3. Load the extension
 
-### 3. Installation Options (ensure Docker is running)
+- Open `zed: extensions`.
+- Click `Install Dev Extension`.
+- Select the `zed-solidity` directory.
 
-First, navigate to the relocated repository in `~/Library/Application Support/Zed/extensions/installed`:
+### 4. Rebuild the extension as needed
 
-```shell
-cd zed-solidity
-```
+As you make changes to the extension, you may need to rebuild it. To do so:
 
-#### Option 1: Automated
-
-Run the following command:
-
-```shell
-make
-```
-
-> That was easy!
-
-#### Option 2: Manual
-
-1. Clone the `tree-sitter-solidity` repository:
-
-```shell
-git clone https://github.com/JoranHonig/tree-sitter-solidity
-```
-
-2. Checkout the commit specified in `grammars/solidity.toml`:
-
-```shell
-git checkout 5cb506ae419c4ad620c77210fd47500d3d169dbc
-```
-
-3. Move into the `tree-sitter-solidity` directory:
-
-```shell
-cd tree-sitter-solidity
-```
-
-4. Build the WebAssembly (WASM) file (ensure Docker is running):
-
-```shell
-tree-sitter build --wasm
-```
-
-5. Rename the generated WASM file to `solidity.wasm`.
-
-6. Relocate the `solidity.wasm` file to the `zed-solidity/grammars` directory within this repository.
-
-7. Remove the `solidity.toml` file from the `zed-solidity/grammars` directory.
-
-### 4. Restart Zed
-
-Run the following command in Zed to reload extensions:
-
-```shell
-zed: reload extensions
-```
-
-Try opening a `.sol` file in Zed. You should see syntax highlighting.
-
-> [!Note]
-> If you still do not see syntax highlighting, try quitting Zed and restarting the application.
+- Open `zed: extensions`.
+- Click the `Rebuild` button next to the extension.
 
 ## 🎸 Contributing
 
-Contributions are welcome! Note that some features, like 'Go to Definition', are not fully supported yet. We encourage enhancements and fixes.
+Contributions are welcome!
 
 To contribute:
 
