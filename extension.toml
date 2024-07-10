@@ -1,14 +1,15 @@
 id = "solidity"
 name = "Solidity"
-version = "0.1.0"
+version = "0.1.1"
 schema_version = 1
 authors = ["Daniel Zarifpour <z@rifpour.xyz>"]
-description = "Solidity language support for Zed. ✰ to support ➪"
+description = "💠 Solidity language support for Zed. ✰ and report issues ➩"
 repository = "https://github.com/zarifpour/zed-solidity"
 
 [language_servers.solidity]
 name = "Solidity Language Server"
 language = "Solidity"
+language_ids = { "Solidity" = "solidity" }
 
 [grammars.solidity]
 repository = "https://github.com/JoranHonig/tree-sitter-solidity"
