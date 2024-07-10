@@ -314,7 +314,7 @@ dependencies = [
 
 [[package]]
 name = "zed_solidity"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "zed_extension_api",
 ]
