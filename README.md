@@ -5,7 +5,14 @@ Enhance Zed with Solidity language support, including syntax highlighting and la
 - Tree Sitter: [tree-sitter-solidity](https://github.com/JoranHonig/tree-sitter-solidity)
 - Language Server: [@nomicfoundation/solidity-language-server](https://github.com/NomicFoundation/hardhat-vscode/tree/main/server)
 
-![CleanShot 2024-02-28 at 02 40 51 on Zed — example sol — zed-solidity@2x](https://github.com/zed-industries/extensions/assets/16494335/2af32291-3d9b-4975-b721-a819d349b085)
+> [!Important]
+> For the best experience, it is highly recommended to use [XY-Zed](https://github.com/zarifpour/xy-zed). This extension has been built on top of the XY-Zed theme, ensuring that all colors are thoughtfully chosen to provide intelligent syntax highlighting.
+
+---
+
+![CleanShot 2024-02-28 at 02 40 51 on Zed — example sol — zed-solidity@2x](public/screenshot.png)
+
+---
 
 ## 🛠️ Development Setup
 
