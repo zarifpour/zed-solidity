@@ -362,6 +362,7 @@
 (emit_statement name: (identifier) @tag)
 (emit_statement "emit" @boolean)
 (user_defined_type (identifier)) @variable
+(call_expression function: (identifier) @function)
 
 ; --------
 ; end Additional rules
