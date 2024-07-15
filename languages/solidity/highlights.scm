@@ -168,11 +168,6 @@
         (type_name)
         "constant" @keyword
         (identifier) @constant)
-
-    (state_variable_declaration
-        (type_name)
-        "constant" @keyword
-        (identifier) @constant)
 ]
 
 (state_variable_declaration
@@ -182,6 +177,14 @@
 (state_variable_declaration
   (type_name)
   (visibility ("private" @keyword)))
+
+(state_variable_declaration
+  (type_name)
+  (visibility ("internal" @keyword)))
+
+(state_variable_declaration
+  (type_name)
+  (visibility ("external" @keyword)))
 
 [
   "view"
@@ -358,6 +361,7 @@
 (revert_statement "revert" @constructor)
 (emit_statement name: (identifier) @tag)
 (emit_statement "emit" @boolean)
+(user_defined_type (identifier)) @variable
 
 ; --------
 ; end Additional rules
