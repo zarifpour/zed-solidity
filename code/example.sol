@@ -2,12 +2,13 @@
 pragma solidity ^0.8.19;
 
 import "./IERC20.sol";
+import {IERC20 as Token} from "./IERC20.sol";
 
 /// @title Comprehensive Solidity Example
 /// @author Test Author
 /// @notice This contract demonstrates all major Solidity language features
 /// @dev Used for testing syntax highlighting and language support
-contract ComprehensiveExample is IERC20 {
+contract ComprehensiveExample is Token {
     // =============================================================================
     // STATE VARIABLES
     // =============================================================================
