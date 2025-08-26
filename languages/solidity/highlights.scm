@@ -160,6 +160,10 @@
 ] @keyword
 
 [
+  "transient"
+] @keyword
+
+[
   "enum"
   "struct"
   "contract"
