@@ -155,6 +155,7 @@
   "error"
   "fallback"
   "receive"
+  (unchecked)
   (virtual)
 ] @keyword
 
