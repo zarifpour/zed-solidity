@@ -1,16 +1,18 @@
 id = "solidity"
 name = "Solidity"
-version = "0.1.3"
+version = "0.1.4"
 schema_version = 1
 authors = ["Daniel Zarifpour <z@rifpour.xyz>"]
 description = "💠 Solidity language support for Zed. ✰ and report issues ➩"
 repository = "https://github.com/zarifpour/zed-solidity"
 
+languages = ["solidity"]
+
 [language_servers.solidity]
 name = "Solidity Language Server"
-language = "Solidity"
+languages = ["Solidity"]
 language_ids = { "Solidity" = "solidity" }
 
 [grammars.solidity]
 repository = "https://github.com/JoranHonig/tree-sitter-solidity"
-commit = "5cb506ae419c4ad620c77210fd47500d3d169dbc"
+rev = "4e938a46c7030dd001bc99e1ac0f0c750ac98254"

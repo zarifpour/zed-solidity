@@ -1,11 +1,7 @@
 name = "Solidity"
 grammar = "solidity"
 path_suffixes = ["sol"]
-autoclose_before = ";:.,=}])>"
-line_comments = ["// ", "/// "]
-block_comment = ["/*", "*/"]
-brackets = [
-    { start = "{", end = "}", close = true, newline = true },
-    { start = "[", end = "]", close = true, newline = true },
-    { start = "(", end = ")", close = true, newline = true },
-]
+line_comments = ["/// ", "// "]
+tab_size = 4
+hard_tabs = false
+documentation_comment = { start = "/**", prefix = " * ", end = " */", tab_size = 1 }
