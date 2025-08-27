@@ -155,7 +155,13 @@
   "error"
   "fallback"
   "receive"
+  "as"
+  (unchecked)
   (virtual)
+] @keyword
+
+[
+  "transient"
 ] @keyword
 
 [

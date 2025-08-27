@@ -2,12 +2,13 @@
 pragma solidity ^0.8.19;
 
 import "./IERC20.sol";
+import {IERC20 as Token} from "./IERC20.sol";
 
 /// @title Comprehensive Solidity Example
 /// @author Test Author
 /// @notice This contract demonstrates all major Solidity language features
 /// @dev Used for testing syntax highlighting and language support
-contract ComprehensiveExample is IERC20 {
+contract ComprehensiveExample is Token {
     // =============================================================================
     // STATE VARIABLES
     // =============================================================================
@@ -20,6 +21,9 @@ contract ComprehensiveExample is IERC20 {
 
     /// @notice Private state variable
     uint256 private _totalSupply;
+
+    /// @notice Transient storage variable (EIP-1153)
+    uint256 transient tempValue;
 
     /// @notice Storage location examples
     mapping(address => uint256) private _balances;
@@ -252,7 +256,7 @@ contract ComprehensiveExample is IERC20 {
             revert InsufficientBalance(amount, accountBalance);
         }
 
-        // Demonstrate unchecked arithmetic
+        // Demonstrate unchecked arithmetic block
         unchecked {
             _balances[account] = accountBalance - amount;
             _totalSupply -= amount;
@@ -315,11 +319,11 @@ contract ComprehensiveExample is IERC20 {
     }
 
     /// @notice Assembly example with memory operations
-    function assemblyExample(bytes calldata data) public pure returns (bytes32 result) {
+    function assemblyExample(bytes calldata _data) public pure returns (bytes32 result) {
         assembly {
             // Load data from calldata
-            let len := data.length
-            let dataPtr := data.offset
+            let len := _data.length
+            let dataPtr := _data.offset
 
             // Memory operations
             let memPtr := mload(0x40)
@@ -334,13 +338,13 @@ contract ComprehensiveExample is IERC20 {
     }
 
     /// @notice Low-level call example
-    function callExternal(address target, bytes calldata data)
+    function callExternal(address target, bytes calldata _data)
         external
         payable
         onlyOwner
         returns (bool success, bytes memory returnData)
     {
-        (success, returnData) = target.call{value: msg.value}(data);
+        (success, returnData) = target.call{value: msg.value}(_data);
 
         if (!success) {
             // Bubble up the revert reason
@@ -418,6 +422,9 @@ contract ComprehensiveExample is IERC20 {
     function payableFunction() external payable {
         require(msg.value > 0, "Must send Ether");
 
+        // Store in transient storage for gas optimization
+        tempValue = msg.value;
+
         // Access transaction properties
         uint256 value = msg.value;
         address sender = msg.sender;
@@ -464,10 +471,12 @@ contract ComprehensiveExample is IERC20 {
             }
         }
 
-        // While loop
+        // While loop with unchecked arithmetic for gas optimization
         uint256 counter = input;
         while (counter > 0 && counter < 1000000) {
-            counter = counter * 2;
+            unchecked {
+                counter = counter * 2;
+            }
             if (counter > 100000) {
                 break;
             }
