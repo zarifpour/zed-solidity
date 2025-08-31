@@ -1,10 +1,13 @@
 id = "solidity"
 name = "Solidity"
-version = "0.1.4"
+version = "0.2.0"
 schema_version = 1
-authors = ["Daniel Zarifpour <z@rifpour.xyz>"]
-description = "💠 Solidity language support for Zed. ✰ and report issues ➩"
-repository = "https://github.com/zarifpour/zed-solidity"
+authors = [
+    "Daniel Zarifpour <z@rifpour.xyz> (Original Creator)",
+    "Jacob Czepluch <j.czepluch@proton.me> (Current Maintainer)",
+]
+description = "Zed extension for the Solidity language"
+repository = "https://github.com/czepluch/zed-solidity"
 
 languages = ["solidity"]
 

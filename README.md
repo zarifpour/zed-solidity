@@ -1,25 +1,18 @@
-# 💠 Solidity Language Support for Zed
+# Solidity Language Support for Zed
 
-Enhance Zed with Solidity language support, including syntax highlighting and language server features such as diagnostics and more!
+This is a community-maintained fork of the original [zed-solidity](https://github.com/zarifpour/zed-solidity) extension by Daniel Zarifpour. Since the original repository is no longer actively maintained, this fork continues development with new features and updates.
+
+Provides syntax highlighting and language server integration for Solidity, including diagnostics, formatting, go-to definition, and more.
 
 - Tree Sitter: [tree-sitter-solidity](https://github.com/JoranHonig/tree-sitter-solidity)
 - Language Server: [@nomicfoundation/solidity-language-server](https://github.com/NomicFoundation/hardhat-vscode/tree/main/server)
-
-> [!Tip]
-> For the best experience, it is highly recommended to use [XY-Zed](https://github.com/zarifpour/xy-zed). This extension has been built on top of the XY-Zed theme, ensuring that all colors are thoughtfully chosen to provide intelligent syntax highlighting.
-
----
-
-![CleanShot 2024-02-28 at 02 40 51 on Zed — example sol — zed-solidity@2x](public/screenshot.png)
-
----
 
 ## 🛠️ Development Setup
 
 ### 1. Clone the repository
 
 ```shell
-git clone https://github.com/zarifpour/zed-solidity
+git clone https://github.com/czepluch/zed-solidity
 ```
 
 ### 2. Uninstall the existing extension
@@ -51,8 +44,8 @@ To contribute:
 
 Check open issues for areas needing improvement. Thanks for helping improve Solidity support in Zed!
 
-<a href="https://github.com/zarifpour/zed-solidity/graphs/contributors">
-  <img alt="contrib.rocks" src="https://contrib.rocks/image?repo=zarifpour/zed-solidity" />
+<a href="https://github.com/czepluch/zed-solidity/graphs/contributors">
+  <img alt="contrib.rocks" src="https://contrib.rocks/image?repo=czepluch/zed-solidity" />
 </a>
 
 ## 🏆 Acknowledgments
@@ -64,8 +57,8 @@ Check open issues for areas needing improvement. Thanks for helping improve Soli
 
 <div align=center>
 
-Made with 🩵 by <a href="https://zarifpour.xyz">Daniel Zarifpour</a>
+**Community-maintained by Jacob Czepluch**
 
-<a href="https://www.buymeacoffee.com/zarifpour"><img src="https://img.buymeacoffee.com/button-api/?text=Help me love&emoji=♥️&slug=zarifpour&button_colour=ffbbb6&font_colour=000000&font_family=Cookie&outline_colour=FF0000&coffee_colour=FFDD00" /></a>
+*Originally created with 🩵 by [Daniel Zarifpour](https://zarifpour.xyz)*
 
 </div>
