@@ -1,41 +1,40 @@
-; Literals
-; --------
-
+; Pragma
 [
- (string)
- (hex_string_literal)
- (unicode_string_literal)
- (yul_string_literal)
+  "pragma"
+  "solidity"
+] @keyword.directive
+
+(solidity_pragma_token
+  "||" @string.special.symbol)
+
+(solidity_pragma_token
+  "-" @string.special.symbol)
+
+(solidity_version_comparison_operator) @operator
+
+(solidity_version) @string.special
+
+; Literals
+[
+  (string)
+  (yul_string_literal)
 ] @string
 
 (hex_string_literal
   "hex" @string.special.symbol
-  )
+  (_) @string)
 
 (unicode_string_literal
   "unicode" @string.special.symbol
-  )
+  (_) @string)
 
 [
- (number_literal)
- (yul_decimal_number)
- (yul_hex_number)
+  (number_literal)
+  (yul_decimal_number)
+  (yul_hex_number)
 ] @number
 
-[
- (true)
- (false)
-] @constant.builtin
-
-(yul_boolean) @boolean.constant
-
-(comment) @comment
-
-; --------
-; end Literals
-
-; Definitions and references
-; -----------
+(yul_boolean) @boolean
 
 ; Variables
 [
@@ -44,206 +43,231 @@
 ] @variable
 
 ; Types
-(type_name) @type
-(primitive_type) @type
-(user_defined_type (identifier) @type)
-["assembly"] @type
+(type_name
+  (identifier) @type)
 
-(payable_conversion_expression "payable" @type)
-; Ensures that delimiters in mapping( ... => .. ) are not colored like types
-(type_name "(" @punctuation.bracket "=>" @punctuation.delimiter ")" @punctuation.bracket)
+(type_name
+  (user_defined_type
+    (identifier) @type))
 
-; Definitions
-(struct_declaration
-  name: (identifier) @type)
-(enum_declaration
-  name: (identifier) @type)
+(type_name
+  "mapping" @function.builtin)
+
+[
+  (primitive_type)
+  (number_unit)
+] @type.builtin
+
 (contract_declaration
   name: (identifier) @type)
-(library_declaration
-  name: (identifier) @type)
-(interface_declaration
-  name: (identifier) @type)
-(event_definition
+
+(struct_declaration
   name: (identifier) @type)
 
+(struct_member
+  name: (identifier) @variable.member)
+
+(enum_declaration
+  name: (identifier) @type)
+
+(emit_statement
+  .
+  (expression
+    (identifier)) @type)
+
+; Handles ContractA, ContractB in function foo() override(ContractA, contractB) {}
+(override_specifier
+  (user_defined_type) @type)
+
+; Functions and parameters
 (function_definition
-  name:  (identifier) @function)
+  name: (identifier) @function)
 
 (modifier_definition
-  name:  (identifier) @function)
+  name: (identifier) @function)
+
 (yul_evm_builtin) @function.builtin
 
 ; Use constructor coloring for special functions
-(constructor_definition "constructor" @constructor)
-(fallback_receive_definition "receive" @constructor)
-(fallback_receive_definition "fallback" @constructor)
+(constructor_definition
+  "constructor" @constructor)
 
-(struct_member name: (identifier) @property)
-(enum_value) @constant
+(modifier_invocation
+  (identifier) @function)
 
-; Invocations
-(emit_statement . (identifier) @type)
-(modifier_invocation (identifier) @function)
+; Handles expressions like structVariable.g();
+(call_expression
+  .
+  (expression
+    (member_expression
+      (identifier) @function.method.call)))
 
-(call_expression . (member_expression property: (identifier) @function.method))
-(call_expression . (identifier) @function)
+; Handles expressions like g();
+(call_expression
+  .
+  (expression
+    (identifier) @function.call))
 
 ; Function parameters
-(call_struct_argument name: (identifier) @property)
-(event_paramater name: (identifier) @variable.parameter)
-(parameter name: (identifier) @variable.parameter)
+(event_parameter
+  name: (_) @variable.parameter)
+
+(parameter
+  name: (_) @variable.parameter)
 
 ; Yul functions
-(yul_function_call function: (yul_identifier) @function)
-(yul_function_definition . (yul_identifier) @function (yul_identifier) @variable.parameter)
+(yul_function_call
+  function: (yul_identifier) @function.call)
 
-; Structs and members
-(member_expression property: (identifier) @property)
-(struct_expression type: ((identifier) @type .))
-(struct_field_assignment name: (identifier) @property)
+; Yul function parameters
+(yul_function_definition
+  .
+  (yul_identifier) @function
+  (yul_identifier) @variable.parameter)
 
+(meta_type_expression
+  "type" @keyword)
 
-; Tokens
-; -------
+(member_expression
+  property: (_) @variable.member)
 
-; Keywords
-(meta_type_expression "type" @keyword)
+(call_struct_argument
+  name: (_) @variable.member)
+
+(struct_field_assignment
+  name: (identifier) @variable.member)
+
+(enum_value) @constant
+
 ; Keywords
 [
-    "calldata"
-    "catch"
-    "constant"
-    "contract"
-    "do"
-    "emit"
-    "enum"
-    "event"
-    "for"
-    "interface"
-    "is"
-    "library"
-    "memory"
-    "modifier"
-    "pragma"
-    "pure"
-    "storage"
-    "struct"
-    "try"
-    "using"
-    "var"
-    "view"
-    "while"
-    (immutable)
-    (yul_variable_declaration)
-    (virtual)
-    (override_specifier)
-    (yul_leave)
+  "abstract"
+  "library"
+  "is"
+  "event"
+  "assembly"
+  "emit"
+  "override"
+  "modifier"
+  "var"
+  "let"
+  "emit"
+  "error"
+  "fallback"
+  "receive"
+  (virtual)
 ] @keyword
 
 [
-  "abstract"
-  (visibility)
-] @constructor
+  "enum"
+  "struct"
+  "contract"
+  "interface"
+] @keyword.type
+
+; FIXME: update grammar
+; (block_statement "unchecked" @keyword)
+(event_parameter
+  "indexed" @keyword)
 
 [
-  "payable"
   "public"
-] @constant
-
-[
-    (virtual)
-    (override_specifier)
-] @operator
-
-; Color immutable and constant variables as constants
-[
-    (state_variable_declaration
-        (type_name)
-        (visibility) @keyword
-        (immutable) @keyword
-        (identifier) @constant)
-
-    (state_variable_declaration
-        (type_name)
-        "constant" @keyword
-        (identifier) @constant)
-]
-
-(state_variable_declaration
-  (type_name)
-  (visibility ("public" @keyword)))
-
-(state_variable_declaration
-  (type_name)
-  (visibility ("private" @keyword)))
-
-(state_variable_declaration
-  (type_name)
-  (visibility ("internal" @keyword)))
-
-(state_variable_declaration
-  (type_name)
-  (visibility ("external" @keyword)))
-
-[
-  "view"
+  "internal"
+  "private"
+  "external"
   "pure"
-] @tag
+  "view"
+  "payable"
+  (immutable)
+] @keyword.modifier
 
 [
- "break"
- "continue"
- "if"
- "else"
- "switch"
- "case"
- "default"
-] @conditional
+  "memory"
+  "storage"
+  "calldata"
+  "constant"
+] @keyword.modifier
 
 [
- "try"
- "catch"
-] @exception
+  "for"
+  "while"
+  "do"
+  "break"
+  "continue"
+] @keyword.repeat
 
 [
- "return"
- "returns"
+  "if"
+  "else"
+  "switch"
+  "case"
+  "default"
+] @keyword.conditional
+
+(ternary_expression
+  "?" @keyword.conditional.ternary
+  ":" @keyword.conditional.ternary)
+
+[
+  "try"
+  "catch"
+  "revert"
+] @keyword.exception
+
+[
+  "return"
+  "returns"
+  (yul_leave)
 ] @keyword.return
 
 "function" @keyword.function
 
-"import" @include
-(import_directive "as" @include)
-(import_directive "from" @include)
+[
+  "import"
+  "using"
+] @keyword.import
 
-(event_paramater "indexed" @keyword)
+(import_directive
+  "as" @keyword.import)
+
+(import_directive
+  "from" @keyword.import)
+
+((import_directive
+  source: (string) @string.special.path)
+  (#offset! @string.special.path 0 1 0 -1))
 
 ; Punctuation
-
 [
-  "("
-  ")"
-  "["
-  "]"
   "{"
   "}"
 ] @punctuation.bracket
 
+[
+  "["
+  "]"
+] @punctuation.bracket
+
+[
+  "("
+  ")"
+] @punctuation.bracket
 
 [
   "."
   ","
+  ":"
+  ; FIXME: update grammar
+  ; (semicolon)
+  "->"
+  "=>"
 ] @punctuation.delimiter
 
-
 ; Operators
-
 [
   "&&"
   "||"
   ">>"
-  ">>>"
   "<<"
   "&"
   "^"
@@ -254,11 +278,11 @@
   "/"
   "%"
   "**"
+  "="
   "<"
   "<="
   "=="
   "!="
-  "!=="
   ">="
   ">"
   "!"
@@ -267,10 +291,6 @@
   "+"
   "++"
   "--"
-  "+="
-  "-="
-  "="
-  "*="
   ":="
 ] @operator
 
@@ -279,90 +299,17 @@
   "new"
 ] @keyword.operator
 
-[
- "break"
- "continue"
- "if"
- "else"
- "switch"
- "case"
- "default"
-] @keyword.conditional
+(import_directive
+  "*" @character.special)
 
-[
- "for"
-]
-@keyword.repeat
+; Comments
+(comment) @comment @spell
 
-[
-  "?"
-  ":"
-] @keyword.operator
+((comment) @comment.documentation
+  (#match? @comment.documentation "^///[^/]"))
 
-[
-  "revert"
-] @keyword.revert
+((comment) @comment.documentation
+  (#match? @comment.documentation "^///$"))
 
-[
-  "error"
-] @keyword.error
-
-; Pragma
-; --------
-
-[
-  "pragma"
-  "solidity"
-] @keyword.directive
-
-(pragma_directive) @primary
-
-[
-    (solidity_pragma_token
-    "||" @string.special.symbol)
-
-    (solidity_pragma_token
-        "-" @string.special.symbol)
-]
-
-(solidity_version) @string.special
-
-[
-    (solidity_version_comparison_operator) @string.special.symbol
-    (solidity_version_comparison_operator
-        ">=" @string.special.symbol)
-    (solidity_version_comparison_operator
-        "=" @string.special.symbol)
-    (solidity_version_comparison_operator
-        ">" @string.special.symbol)
-    (solidity_version_comparison_operator
-        "<=" @string.special.symbol)
-    (solidity_version_comparison_operator
-        "<" @string.special.symbol)
-    (solidity_version_comparison_operator
-        "^" @string.special.symbol)
-    (solidity_version_comparison_operator
-        "~" @string.special.symbol)
-]
-
-; --------
-; end Pragma
-
-; Additional rules
-; --------
-
-(expression_statement (call_expression . function: (identifier) @constructor))
-(try_statement "try" @keyword)
-(catch_clause "catch" @keyword)
-(call_expression function: (member_expression property: (identifier) @function))
-(error_declaration name: (identifier) @constant)
-(event_definition name: (identifier) @tag)
-(revert_statement error: (identifier) @constant)
-(revert_statement "revert" @constructor)
-(emit_statement name: (identifier) @tag)
-(emit_statement "emit" @boolean)
-(user_defined_type (identifier)) @variable
-(call_expression function: (identifier) @function)
-
-; --------
-; end Additional rules
+((comment) @comment.documentation
+  (#match? @comment.documentation "^/\\*\\*[^*].*\\*/$"))
