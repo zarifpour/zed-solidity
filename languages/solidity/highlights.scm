@@ -155,7 +155,13 @@
   "error"
   "fallback"
   "receive"
+  "as"
+  (unchecked)
   (virtual)
+] @keyword
+
+[
+  "transient"
 ] @keyword
 
 [
@@ -165,8 +171,7 @@
   "interface"
 ] @keyword.type
 
-; FIXME: update grammar
-; (block_statement "unchecked" @keyword)
+
 (event_parameter
   "indexed" @keyword)
 
