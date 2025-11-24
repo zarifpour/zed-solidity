@@ -37,8 +37,8 @@ Example task that connect with the definitions in [runnables.scm](languages/soli
   {
     "label": "forge test: $ZED_SYMBOL (contract)",
     "command": "forge",
-    "args": [ "test", "--match-contract", "$ZED_SYMBOL", "-vvvvv", ],
-    "tags": [ "solidity-contract-test" ],
+    "args": ["test", "--match-contract", "$ZED_SYMBOL", "-vvvvv"],
+    "tags": ["solidity-contract-test"],
     "reveal": "always",
     "use_new_terminal": false
   }
