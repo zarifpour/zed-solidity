@@ -218,7 +218,7 @@
   {
     "label": "solhint: lint all",
     "command": "solhint",
-    "args": ["'contracts/**/*.sol'"],
+    "args": ["contracts/**/*.sol"],
     "tags": ["linting", "solhint", "all"],
     "reveal": "always",
     "use_new_terminal": false
