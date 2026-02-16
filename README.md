@@ -2,8 +2,19 @@
 
 Enhance Zed with Solidity language support, including syntax highlighting and language server features such as diagnostics and more!
 
-- Tree Sitter: [tree-sitter-solidity](https://github.com/JoranHonig/tree-sitter-solidity)
-- Language Server: [@nomicfoundation/solidity-language-server](https://github.com/NomicFoundation/hardhat-vscode/tree/main/server)
+## Features
+
+### Solidity (`.sol`)
+
+- Syntax highlighting via [tree-sitter-solidity](https://github.com/JoranHonig/tree-sitter-solidity)
+- Diagnostics, completions, go-to-definition, and other LSP features via [@nomicfoundation/solidity-language-server](https://github.com/NomicFoundation/hardhat-vscode/tree/main/server)
+- Code outline, indentation, and bracket matching
+
+### Yul (`.yul`)
+
+- Syntax highlighting via [tree-sitter-yul](https://github.com/czepluch/tree-sitter-yul), including recognition of EVM builtins
+- Code outline, indentation, and bracket matching
+- No LSP support (the Nomic Foundation language server does not support standalone `.yul` files)
 
 > [!Tip]
 > For the best experience, it is highly recommended to use [XY-Zed](https://github.com/zarifpour/xy-zed). This extension has been built on top of the XY-Zed theme, ensuring that all colors are thoughtfully chosen to provide intelligent syntax highlighting.
