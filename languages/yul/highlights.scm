@@ -36,9 +36,10 @@
 
 [
   "for"
-  "break"
-  "continue"
 ] @keyword.repeat
+
+(break_statement) @keyword.repeat
+(continue_statement) @keyword.repeat
 
 [
   "if"
@@ -47,9 +48,7 @@
   "default"
 ] @keyword.conditional
 
-[
-  "leave"
-] @keyword.return
+(leave_statement) @keyword.return
 
 ; Object notation
 [

@@ -19,4 +19,4 @@ rev = "4e938a46c7030dd001bc99e1ac0f0c750ac98254"
 
 [grammars.yul]
 repository = "https://github.com/czepluch/tree-sitter-yul"
-rev = "3120b83c127939fb0472ca7f51ae593e267e54f0"
+rev = "bc7a44058521b8689375416f9e23f842df8abb55"
