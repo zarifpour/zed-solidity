@@ -1,6 +1,6 @@
 id = "solidity"
 name = "Solidity"
-version = "0.1.10"
+version = "0.2.0"
 schema_version = 1
 authors = ["Daniel Zarifpour <z@rifpour.xyz>", "Jacob Czepluch <zed-solidity.gulp938@passmail.net>"]
 description = "💠 Solidity language support for Zed. ✰ and report issues ➩"
