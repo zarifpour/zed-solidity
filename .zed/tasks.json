@@ -1,0 +1,194 @@
+// Project tasks configuration. See https://zed.dev/docs/tasks for documentation.
+//
+// Solidity Task Templates for Zed
+// Copy the tasks for your framework to your project's .zed/tasks.json
+//
+// Available frameworks:
+// - Foundry (Forge)
+// - Hardhat
+// - Truffle
+// - Brownie
+// - Security Tools (Slither, Mythril, Solhint)
+
+[
+  // ============================================================================
+  // FOUNDRY (Forge)
+  // ============================================================================
+  {
+    "label": "forge test: $ZED_SYMBOL",
+    "command": "forge",
+    "args": ["test", "--match-test", "$ZED_SYMBOL", "-vvvvv"],
+    "tags": ["solidity-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  },
+  {
+    "label": "forge test: $ZED_SYMBOL (contract)",
+    "command": "forge",
+    "args": ["test", "--match-contract", "$ZED_SYMBOL", "-vvvvv"],
+    "tags": ["solidity-contract-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  },
+  {
+    "label": "forge test: current file",
+    "command": "forge",
+    "args": ["test", "--match-path", "$ZED_FILE", "-vvvvv"],
+    "tags": ["solidity-test", "solidity-contract-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  },
+  {
+    "label": "forge test: all tests",
+    "command": "forge",
+    "args": ["test", "-vvvvv"],
+    "tags": ["solidity-test", "solidity-contract-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  },
+
+  // ============================================================================
+  // HARDHAT
+  // ============================================================================
+  {
+    "label": "hardhat test: $ZED_SYMBOL",
+    "command": "npx",
+    "args": ["hardhat", "test", "--grep", "$ZED_SYMBOL"],
+    "tags": ["solidity-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  },
+  {
+    "label": "hardhat test: $ZED_SYMBOL (contract)",
+    "command": "npx",
+    "args": ["hardhat", "test", "--grep", "$ZED_SYMBOL"],
+    "tags": ["solidity-contract-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  },
+  {
+    "label": "hardhat test: current file",
+    "command": "npx",
+    "args": ["hardhat", "test", "$ZED_FILE"],
+    "tags": ["solidity-test", "solidity-contract-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  },
+  {
+    "label": "hardhat test: all tests",
+    "command": "npx",
+    "args": ["hardhat", "test"],
+    "tags": ["solidity-test", "solidity-contract-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  },
+
+  // ============================================================================
+  // TRUFFLE
+  // ============================================================================
+  {
+    "label": "truffle test: $ZED_SYMBOL",
+    "command": "truffle",
+    "args": ["test", "--grep", "$ZED_SYMBOL"],
+    "tags": ["solidity-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  },
+  {
+    "label": "truffle test: $ZED_SYMBOL (contract)",
+    "command": "truffle",
+    "args": ["test", "--grep", "$ZED_SYMBOL"],
+    "tags": ["solidity-contract-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  },
+  {
+    "label": "truffle test: current file",
+    "command": "truffle",
+    "args": ["test", "$ZED_FILE"],
+    "tags": ["solidity-test", "solidity-contract-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  },
+  {
+    "label": "truffle test: all tests",
+    "command": "truffle",
+    "args": ["test"],
+    "tags": ["solidity-test", "solidity-contract-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  },
+
+  // ============================================================================
+  // BROWNIE
+  // ============================================================================
+  {
+    "label": "brownie test: $ZED_SYMBOL",
+    "command": "brownie",
+    "args": ["test", "-k", "$ZED_SYMBOL"],
+    "tags": ["solidity-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  },
+  {
+    "label": "brownie test: $ZED_SYMBOL (contract)",
+    "command": "brownie",
+    "args": ["test", "-k", "$ZED_SYMBOL"],
+    "tags": ["solidity-contract-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  },
+  {
+    "label": "brownie test: current file",
+    "command": "brownie",
+    "args": ["test", "$ZED_FILE"],
+    "tags": ["solidity-test", "solidity-contract-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  },
+  {
+    "label": "brownie test: all tests",
+    "command": "brownie",
+    "args": ["test"],
+    "tags": ["solidity-test", "solidity-contract-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  },
+
+  // ============================================================================
+  // SECURITY & LINTING TOOLS
+  // ============================================================================
+  {
+    "label": "slither: analyze current file",
+    "command": "slither",
+    "args": ["$ZED_FILE"],
+    "tags": ["solidity-test", "solidity-contract-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  },
+  {
+    "label": "slither: analyze all",
+    "command": "slither",
+    "args": ["."],
+    "tags": ["solidity-test", "solidity-contract-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  },
+
+  {
+    "label": "solhint: lint current file",
+    "command": "solhint",
+    "args": ["$ZED_FILE"],
+    "tags": ["solidity-test", "solidity-contract-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  },
+  {
+    "label": "solhint: lint all",
+    "command": "solhint",
+    "args": ["contracts/**/*.sol"],
+    "tags": ["solidity-test", "solidity-contract-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  }
+]

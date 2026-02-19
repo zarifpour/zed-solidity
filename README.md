@@ -25,6 +25,49 @@ Enhance Zed with Solidity language support, including syntax highlighting and la
 
 ---
 
+## Tasks
+
+Example tasks for different test frameworks can be found in [.zed/tasks.json](.zed/tasks.json).
+
+How to set up Foundry to run tests via a runnable (the play button next to tests
+in the UI) and via keyboard shortcut.
+
+Example task that connect with the definitions in [runnables.scm](languages/solidity/runnables.scm) via tags.
+```json
+[
+  // Individual test.
+  {
+    "label": "forge test: $ZED_SYMBOL",
+    "command": "forge",
+    "args": ["test", "--match-test", "$ZED_SYMBOL", "-vvvvv"],
+    "tags": ["solidity-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  },
+  // Contract test.
+  {
+    "label": "forge test: $ZED_SYMBOL (contract)",
+    "command": "forge",
+    "args": ["test", "--match-contract", "$ZED_SYMBOL", "-vvvvv"],
+    "tags": ["solidity-contract-test"],
+    "reveal": "always",
+    "use_new_terminal": false
+  }
+]
+```
+
+Example keymap to run Forge test for the symbol under the cursor.
+```json
+[
+  {
+    "context": "Editor && extension==sol",
+    "bindings": {
+      "alt-g": ["task::Spawn", { "task_name": "forge test: $ZED_SYMBOL" }]
+    }
+  }
+]
+```
+
 ## 🛠️ Development Setup
 
 ### 1. Clone the repository
