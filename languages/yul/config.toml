@@ -1,0 +1,17 @@
+name = "Yul"
+grammar = "yul"
+path_suffixes = ["yul"]
+line_comments = ["// "]
+tab_size = 4
+hard_tabs = false
+autoclose_before = ";:.,=}])>"
+
+brackets = [
+    { start = "{", end = "}", close = true, newline = true },
+    { start = "(", end = ")", close = true, newline = true },
+    { start = "\"", end = "\"", close = true, newline = false, not_in = ["comment", "string"] },
+    { start = "'", end = "'", close = true, newline = false, not_in = ["comment", "string"] },
+    { start = "/*", end = " */", close = true, newline = false, not_in = ["comment", "string"] },
+]
+
+word_characters = ["$", "_"]
